@@ -1,5 +1,4 @@
 const Article = require('./src/model/Article');
-const db = require('./src/dao/connDB');
 const ArticleDao = require('./src/dao/ArticleDao');
 
 let a = new Article({
@@ -9,19 +8,8 @@ let a = new Article({
     hidden: false
 });
 
-for(let i=0;i<30;i++){
-    let a = new Article({
-        title: i,
-        author: 'youthfighter',
-        content: 'content',
-        hidden: false
-    });
-    a.save()
-}
-ArticleDao.findByParamsAndPage({},10,1)
-    .then(data=>{
-        console.log(data);
-    })
+let bb = ArticleDao.findByParams({})
+console.log(bb)
 /*Article.findOne({ title: '123'})
     .then(data=>{
         if(data){

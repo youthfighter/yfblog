@@ -1,31 +1,31 @@
+const moment = require('moment')
+const ArticleDao = require('../dao/ArticleDao')
 class ArticleController{
     async getAll(ctx){
         try{
-            let result = await asyncDemo()
-            ctx.body = result
+            let articles = await ArticleDao.findByParams({})
+            articles.forEach((value,index)=>{
+                let mt = moment(value.createDate)
+                value.year = mt.format('YYYY')
+                value.monthDay = mt.format('MM-DD')
+            })
+            ctx.body = articles
         }catch (e) {
-            ctx.status = 400
-            ctx.body = e.message
+            ctx.status = 404
+            ctx.body = e
         }
     }
     async getOne(ctx){
-        console.log('123')
         try{
-            let result = await asyncDemo()
+            let _id = ctx.params.id
+            let result = await ArticleDao.findById({_id})
+            result.nn = moment(result.createDate).format('YYYY年MM月DD日 HH:mm:ss')
             ctx.body = result
         }catch (e) {
-            ctx.status = 400
-            ctx.body = e.message
+            ctx.status = 404
+            ctx.body = '该文章不存在'
         }
     }
-}
-
-let asyncDemo = ()=>{
-    return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-            resolve('ok')
-        }, 1000)
-    })
 }
 
 module.exports = new ArticleController()
