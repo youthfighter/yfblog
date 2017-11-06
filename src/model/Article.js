@@ -7,6 +7,6 @@ let ArticleSchema = new Schema({
   content:   String,
   lastUpdate: { type: Date, default: Date.now },
   createDate: {type: Date, default: Date.now},
-  hidden: Boolean
+  hidden: {type: Boolean, default: false}
 });
 module.exports = mongoose.model('Article', ArticleSchema);

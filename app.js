@@ -5,11 +5,12 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
+const session = require('koa-session');
 
 const index = require('./routes/index')
 const users = require('./routes/users')
 const article = require('./routes/article')
-
+const cookieConfig = require('./configs').cookie
 // error handler
 onerror(app)
 
@@ -17,6 +18,7 @@ onerror(app)
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
 }))
+app.use(session(cookieConfig, app));
 app.use(json())
 app.use(logger())
 app.use(require('koa-static')(__dirname + '/public'))
