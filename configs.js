@@ -1,6 +1,7 @@
 module.exports = {
 	imageServer: {
-    path: 'D:/static/image/'
+		path: 'D:/static/image/',
+		static: '/static/'		
 	},
 	mongodb: {
 		ip: '127.0.0.1',
