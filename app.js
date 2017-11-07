@@ -7,6 +7,7 @@ const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const session = require('koa-session');
 
+const fileUpload = require('./routes/fileUpload')
 const index = require('./routes/index')
 const users = require('./routes/users')
 const article = require('./routes/article')
@@ -39,6 +40,8 @@ app.use(async (ctx, next) => {
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 app.use(article.routes(),article.allowedMethods())
+app.use(fileUpload.routes(),fileUpload.allowedMethods())
+
 
 // error-handling
 app.on('error', (err, ctx) => {

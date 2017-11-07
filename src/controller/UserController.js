@@ -23,7 +23,6 @@ class UserController{
     try{
       //判断用户是否登录
       let sei = new Session(ctx)
-      console.log(2,sei.getUser())
       if (sei.getUser()) {
         ctx.body = `${sei.getUserName()} 已登录，请勿重复登录`
       } else {
