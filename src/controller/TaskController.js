@@ -1,11 +1,28 @@
 const TaskDao = require('../dao/TaskDao')
 const utils = require('../util/utils')
 class TaskController{
-  async getUndoneTask(ctx) {
-    try{
-      let tasks = await TaskDao.findBydone(false)
+  async getTasks (ctx) {
+    try {
+      const { done = false } = ctx.query
+      const author = ctx.session.user.name
+      let tasks = await TaskDao.findByParams({done, author})
       ctx.body = tasks
-    } catch(err) {
+    } catch (e) {
+      if (err) {
+        let info = utils.catchError(e)
+        ctx.status = info.status
+        ctx.body = info.body
+      }
+    }
+  }
+  async getTask (ctx) {
+    try {
+      const id = ctx.params.taskId
+      const userName = ctx.session.user.name
+      let task = await TaskDao.findById(id)
+      if (task && task.author === userName) ctx.body = task
+      else ctx.body = ''      
+    } catch (e) {
       if (err) {
         let info = utils.catchError(e)
         ctx.status = info.status
@@ -14,39 +31,32 @@ class TaskController{
     }
   }
   async setTaskDone (ctx) {
-    try{
-      let res = await TaskDao.update({done: true})
-      ctx.body = res
-    } catch(err) {
+    try {
+      const id = ctx.params.taskId
+      const userName = ctx.session.user.name
+      let task = await TaskDao.findById(id)
+      if (task && task.author === userName) task.done = true
+      else throw { status: 403, errCode: 'need.task.permission' }
+      ctx.body = await TaskDao.update(task)
+    } catch (e) {
       if (err) {
         let info = utils.catchError(e)
         ctx.status = info.status
         ctx.body = info.body
-      }
+      }     
     }
   }
-  async getDoneTask (ctx) {
-    try{
-      let tasks = await TaskDao.findBydone(false)
-      ctx.body = tasks
-    } catch (err) {
+  async insertTask (ctx) {
+    try {
+      const author = ctx.session.user.author
+      const { task } = ctx.request.body
+      if (task) throw { status: 500, errCode: 'task.cant.null' }
+      ctx.body = await TaskDao.update({author, task})
+    } catch (e) {
       if (err) {
         let info = utils.catchError(e)
         ctx.status = info.status
-        ctx.body = info.body 
-      }
-    }
-  }
-  async getOneTask (ctx) {
-    try{
-      let _id = ctx.params._id
-      let task = await TaskDao.findById({_id})
-      ctx.body = task
-    } catch (err) {
-      if (err) {
-        let info = utils.catchError(e)
-        ctx.status = info.status
-        ctx.body = info.body 
+        ctx.body = info.body
       }
     }
   }

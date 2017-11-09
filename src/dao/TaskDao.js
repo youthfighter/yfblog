@@ -11,9 +11,6 @@ class TaskDao extends BaseDao{
   findById (id) {
       return Task.findById(id).lean();
   }
-  findBydone (doneFlag) {
-      return Task.find({done: doneFlag}).sort({createDate:-1}).lean()
-  }
   findByParams (params) {
       return Task.find(params).sort({createDate:-1}).lean()
   }

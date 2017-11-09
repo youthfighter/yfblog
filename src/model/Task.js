@@ -3,7 +3,7 @@ mongoose.Promise = global.Promise
 let Schema = mongoose.Schema
 let TaskSchema = new Schema({
   task: String,
-  anuthor: String,
+  author: String,
   done: {type: Boolean, default: true},
   createDate: {type: Date, default: Date.now}
 })

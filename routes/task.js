@@ -1,13 +1,15 @@
 const router = require('koa-router')()
 const TaskCtl = require('../src/controller/TaskController')
 const loginCheck = require('../midware/loginCheck')
-router.prefix('/api')
+router.prefix('/api/tasks')
+
 /* 获取任务 */
-router.get('/tasks', TaskCtl.getTask)
-/* 获取某篇文章 */
-router.get('/tasks/:articleId', ArticleCtl.getArticle)
-/* 新建一篇文章 */
-router.post('/tasks', loginCheck, ArticleCtl.insertArticle)
-/* 修改某篇文章 */
-router.put('/tasks/:articleId', loginCheck, ArticleCtl.updateArticle)
+router.get('/', loginCheck, TaskCtl.getTasks)
+/* 获取某个 */
+router.get('/:taskId', loginCheck, TaskCtl.getTask)
+/* 新建任务 */
+router.post('/', loginCheck, TaskCtl.insertTask)
+/* 设置任务已完成 */
+router.patch('/:taskId', loginCheck, TaskCtl.setTaskDone)
+
 module.exports = router

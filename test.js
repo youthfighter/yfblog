@@ -1,8 +1,8 @@
 class abcd{
-    abc () {
+    async abc () {
         console.log('abc')
     }
-    ccc () {
+    async ccc () {
         try{
             this.abc()
             console.log('ccc')
@@ -11,4 +11,4 @@ class abcd{
         }        
     }
 }
-new abcd().ccc()
+module.exports = new abcd()
