@@ -6,9 +6,11 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const session = require('koa-session');
+const cookie = require('./configs').cookie
 
-const fileUpload = require('./routes/fileUpload')
 const index = require('./routes/index')
+const imageUpload = require('./routes/imageUpload')
+const webSettings = require('./routes/webSettings')
 const users = require('./routes/users')
 const article = require('./routes/article')
 const cookieConfig = require('./configs').cookie
@@ -33,15 +35,19 @@ app.use(async (ctx, next) => {
   const start = new Date()
   await next()
   const ms = new Date() - start
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+  console.log(`${new Date()}:${ctx.method} ${ctx.url} - ${ms}ms`)
 })
-
+/* session */
+app.use(async (ctx, next) => {
+  ctx.session.save()
+  await next()
+}) 
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
-app.use(article.routes(),article.allowedMethods())
-app.use(fileUpload.routes(),fileUpload.allowedMethods())
-
+app.use(article.routes(), article.allowedMethods())
+app.use(imageUpload.routes(),imageUpload.allowedMethods())
+app.use(webSettings.routes(),webSettings.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

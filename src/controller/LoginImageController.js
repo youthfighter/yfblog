@@ -1,34 +1,28 @@
-const fs = require('fs-extra')
-const uuidv4 = require('uuid/v4')
 const utils = require('../util/utils')
 const LoginImageDao = require('../dao/loginImageDao')
 const {path, url} = require('../../configs').imageServer
+const ImageCtr = require('../controller/ImageController')
 class LoginImageController{
   /* 上传新的背景图片 */
-  async upload (ctx) {
+  async uploadBgImage (ctx) {
     try{
-      const {originalname, tempPath, mimetype} = ctx.req.file
-      let end = originalname.substr(originalname.lastIndexOf('.'))
-      /* 复制文件到指定文件夹下 */
-      let imagePath = `${path}${uuidv4()}${end}`
-      let imageUrl = `${url}${uuidv4()}${end}`
-      await fs.copy(tempPath, imagePath)
+      let image = await ImageCtr._upload(ctx.session.user.name, ctx.req.file)
+      let imageSrc= image.src
       let loginImg = await LoginImageDao.findOne()
       /* 数据库中存在该配置则添加，不存在则插入配置 */
       let rLoginImage
       if (loginImg) {
-        loginImg.imageList.push(imageUrl)
-        rLoginImage = await loginImg.save()
+        loginImg.imageList.push(imageSrc)
+        rLoginImage = await LoginImageDao.update(loginImg)
       } else {
         rLoginImage = await LoginImageDao.insert({
-          currImage: imageUrl,
-          imageList: [imageUrl]
+          currImage: imageSrc,
+          imageList: [imageSrc]
         })
       }
-      fs.remove(tempPath)
       ctx.body = rLoginImage
-    } catch(err) {
-      if(err) {
+    } catch(e) {
+      if (e) {
         let info = utils.catchError(e)
         ctx.status = info.status
         ctx.body = info.body
@@ -38,10 +32,8 @@ class LoginImageController{
   /* 设置背景图片 */
   async setBgImage(ctx) {
     try{
-      let index = parseInt(ctx.request.body.index)
-      if (isNaN(index) || index < 0) {
-        throw {status: 500, errCode:'image.set.fail'}
-      }
+      let index = parseInt(ctx.params.index)
+      if (isNaN(index) || index < 0) throw {status: 500, errCode:'image.set.fail'}
       let loginImg = await LoginImageDao.findOne()
       let rLoginImage
       if (loginImg) {
@@ -50,7 +42,8 @@ class LoginImageController{
         }
         loginImg.currImage = loginImg.imageList[index]
         loginImg.updateDate = new Date()
-        rLoginImage = await loginImg.save()
+        rLoginImage = await LoginImageDao.update(loginImg)
+        ctx.body = rLoginImage
       } else {
         throw {status: 500, errCode:'image.set.fail'}
       }
@@ -63,9 +56,10 @@ class LoginImageController{
     }
   }
   /* 获取所有登陆背景图片 */
-  async getAllBgImage(ctx) {
+  async getAllBgImages(ctx) {
     try{
       let loginImg = await LoginImageDao.findOne()
+      ctx.body = loginImg
       /* 不存在配置 */
       if (!loginImg) {
         throw {status: 500, errCode:'image.not.set'}
@@ -97,4 +91,4 @@ class LoginImageController{
     }
   }
 }
-module.exports = new FileController()
+module.exports = new LoginImageController()

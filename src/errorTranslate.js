@@ -5,5 +5,6 @@ module.exports = {
   'need.article.content': '请输入文章内容',
   'image.upload.fail': '图片上传失败',
   'image.set.fail': '登陆页图片设置失败',
-  'image.not.set': '还未设置过登陆背景图片'
+  'image.not.set': '还未设置过登陆背景图片',
+  'need.article.permission': '没有该文章的操作权限'
 }

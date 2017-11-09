@@ -1,19 +1,14 @@
-function ab () {
-    return new Promise((resolve, reject) => {
-        resolve('123')
-    })
-}
-
-async function cd () {
-    let nn
-    try{
-        console.log(1)
-        nn = await ab()
-        console.log(nn)
-    }catch(e){
-        console.log(2)
-        nn = e
+class abcd{
+    abc () {
+        console.log('abc')
     }
-    return nn
+    ccc () {
+        try{
+            this.abc()
+            console.log('ccc')
+        }catch(e){
+
+        }        
+    }
 }
-console.log(cd())
+new abcd().ccc()

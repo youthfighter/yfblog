@@ -8,8 +8,8 @@ class UserDao extends BaseDao{
         let _id = params._id;
         return User.update({_id},params);
     }
-    findById (_id) {
-        return User.findOne({_id}).lean();
+    findById (id) {
+        return User.findById(id).lean();
     }
     findByName (name) {
         return User.findOne({name})

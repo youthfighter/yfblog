@@ -1,4 +1,4 @@
-const File = require('../model/File');
+const loginImage = require('../model/loginImage');
 const BaseDao = require('./BaseDao');
 class loginImageDao extends BaseDao{
     insert(File){

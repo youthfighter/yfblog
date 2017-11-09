@@ -1,5 +1,6 @@
-const Article = require('../model/Article');
-const BaseDao = require('./BaseDao');
+const Article = require('../model/Article')
+const BaseDao = require('./BaseDao')
+const mongoose = require('mongoose')
 class ArticleDao extends BaseDao{
     insert(article){
         return new Article(article).save();
@@ -8,14 +9,11 @@ class ArticleDao extends BaseDao{
         let _id = params._id;
         return Article.update({_id},params);
     }
-    findById(_id){
-        return Article.findOne({_id}).lean();
-    }
-    findByParams(params){
-        return Article.find(params).sort({createDate:-1}).lean()
+    findById(id){
+        return Article.findById(id).lean()
     }
     findPageByParams(params,pageNum,limit){
-        return Article.find(params).sort({createDate:-1}).limit(pageNum).skip(pageNum*limit).lean()
+        return Article.find(params).sort({createDate:-1}).limit(limit).skip(pageNum*limit).lean()
     }
 }
 module.exports = new ArticleDao();

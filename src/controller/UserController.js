@@ -3,28 +3,24 @@ const md5 = require('md5')
 const utils = require('../util/utils')
 const Session = require('../util/session')
 class UserController{
+  /* 获取当前登录用户的部分用户信息 */
   async getUserInfo(ctx) {
     try{
-      let sei = new Session(ctx)
-      if (sei.getUser()) {
-        const name = sei.getUserName
-        ctx.body = { name }
-      } else {
-        throw {}
-      }
+      const name = ctx.session.user.name
+      ctx.body = { name }
     }catch (e) {
       let info = utils.catchError(e)
       ctx.status = info.status
       ctx.body = info.body
     }
   }
+  /* 用户登录 */
   async login(ctx) {
-    console.log(1,ctx.Session)
     try{
       //判断用户是否登录
       let sei = new Session(ctx)
-      if (sei.getUser()) {
-        ctx.body = `${sei.getUserName()} 已登录，请勿重复登录`
+      if (ctx.session.user) {
+        ctx.body = ctx.session.user.name
       } else {
         //获取用户名密码
         const { name, password } = ctx.request.body
@@ -46,10 +42,7 @@ class UserController{
   }
   async layout (ctx) {    
     try {
-      let sei = new Session(ctx)
-      if (sei.getUser()) {
-        sei.setUser(null)
-      }
+      if (ctx.session.user) ctx.session.user = null
       ctx.body = 'success'
     } catch (e) {
       let info = utils.catchError(e)

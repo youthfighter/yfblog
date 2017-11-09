@@ -17,5 +17,18 @@ module.exports = {
 				body: '内部服务器错误'
 			}
 		}
+	},
+	translate (errorCode) {
+    let res = tran[errorCode]
+    if (res) {
+      return {
+        errCode: errorCode,
+        errMsg: res
+      }
+    } else {
+      return {
+        errCode: errorCode
+      }
+    }
 	}
 }

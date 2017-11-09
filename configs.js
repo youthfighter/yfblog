@@ -1,7 +1,9 @@
 module.exports = {
 	imageServer: {
-		path: 'D:/static/image/',
-		static: '/static/'		
+		dirPath: 'D:/static/image/',
+		webUrl: '/static/',
+		dest: 'uploads/',
+		inputName: 'image'
 	},
 	mongodb: {
 		ip: '127.0.0.1',
@@ -10,7 +12,7 @@ module.exports = {
 	},
 	cookie: {
 		key: 'SESSION_ID',
-		maxAge: 60000,
+		maxAge: 50000,
 		overwrite: true,
 		httpOnly: false,
 		signed: false,
