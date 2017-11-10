@@ -13,6 +13,7 @@ const imageUpload = require('./routes/imageUpload')
 const webSettings = require('./routes/webSettings')
 const users = require('./routes/users')
 const article = require('./routes/article')
+const task = require('./routes/task')
 const cookieConfig = require('./configs').cookie
 // error handler
 onerror(app)
@@ -48,7 +49,7 @@ app.use(users.routes(), users.allowedMethods())
 app.use(article.routes(), article.allowedMethods())
 app.use(imageUpload.routes(),imageUpload.allowedMethods())
 app.use(webSettings.routes(),webSettings.allowedMethods())
-
+app.use(task.routes(),task.allowedMethods())
 // error-handling
 app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)

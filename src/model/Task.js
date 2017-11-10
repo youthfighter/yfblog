@@ -7,4 +7,4 @@ let TaskSchema = new Schema({
   done: {type: Boolean, default: true},
   createDate: {type: Date, default: Date.now}
 })
-module.exports = mongoose.model('TaskSchema', loginImageSchema)
+module.exports = mongoose.model('Task', TaskSchema)
