@@ -12,7 +12,7 @@ module.exports = {
 	},
 	cookie: {
 		key: 'SESSION_ID',
-		maxAge: 50000,
+		maxAge: 15*60*1000,
 		overwrite: true,
 		httpOnly: false,
 		signed: false,

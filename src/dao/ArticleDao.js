@@ -6,8 +6,9 @@ class ArticleDao extends BaseDao{
         return new Article(article).save();
     }
     update(params){
-        let _id = params._id;
-        return Article.update({_id},params);
+        let _id = params._id
+        delete params._id
+        return Article.update({_id},params)
     }
     findById(id){
         return Article.findById(id).lean()

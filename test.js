@@ -1,14 +1,9 @@
-class abcd{
-    async abc () {
-        console.log('abc')
-    }
-    async ccc () {
-        try{
-            this.abc()
-            console.log('ccc')
-        }catch(e){
-
-        }        
-    }
-}
-module.exports = new abcd()
+var htmlToText = require('html-to-text');
+let a = "<h3 id=\"content-aaron-swartz-https-raw-githubusercontent-com-smshen-markdownphotos-master-res-test-jpg-\">content <img src=\"https://raw.githubusercontent.com/smshen/MarkdownPhotos/master/Res/test.jpg\" alt=\"Aaron Swartz\"></h3>\n"
+var text = htmlToText.fromString(a, {
+   wordwrap: 130,
+   ignoreHref: true,
+   ignoreImage: true,
+   uppercaseHeadings: false
+});
+console.log(text);

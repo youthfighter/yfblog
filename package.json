@@ -11,6 +11,7 @@
   "dependencies": {
     "debug": "^2.6.3",
     "fs-extra": "^4.0.2",
+    "html-to-text": "^3.3.0",
     "koa": "^2.2.0",
     "koa-bodyparser": "^3.2.0",
     "koa-convert": "^1.2.0",
@@ -28,6 +29,7 @@
     "mongodb": "^2.2.33",
     "mongoose": "^4.12.6",
     "pug": "^2.0.0-rc.1",
+    "trim-html-tag": "^1.0.5",
     "uuid": "^3.1.0"
   },
   "devDependencies": {

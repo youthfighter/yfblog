@@ -3,7 +3,6 @@ const utils = require('../util/utils')
 class TaskController{
   async getTasks (ctx) {
     try {
-      console.log('aaa')
       const { done = false } = ctx.query
       const author = ctx.session.user.name
       let tasks = await TaskDao.findByParams({done, author})

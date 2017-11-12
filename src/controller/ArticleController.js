@@ -3,6 +3,7 @@ const ArticleDao = require('../dao/ArticleDao')
 const utils = require('../util/utils')
 const Session = require('../util/session')
 const marked = require('marked')
+const htmlUtil = require('../util/html')
 class ArticleController{
   /* 插入文章 */
   async insertArticle (ctx) {
@@ -39,6 +40,7 @@ class ArticleController{
       if (article.author !==ctx.session.user.name) throw { status: 403, errCode: 'need.article.permission' }
       article.title = params.title
       article.content = params.content
+      article.hidden = params.hidden
       ctx.body = await ArticleDao.update(article)
     } catch (e) {
       let info = utils.catchError(e)
@@ -57,8 +59,16 @@ class ArticleController{
           let mt = moment(value.createDate)
           value.year = mt.format('YYYY')
           value.monthDay = mt.format('MM-DD')
+          value.fmCreateDate = mt.format('YYYY-MM-DD')
+          let mt2 = moment(value.createDate)
+          value.fmLastUpdate = mt2.format('YYYY-MM-DD')
+          value.html = marked(value.content)
+          value.description = `${htmlUtil.getText(value.html).substr(0,200)}...`
       })
-      ctx.body = articles
+      ctx.body = {
+        articles,
+        total: articles.length
+      }
     }catch (e) {
       let info = utils.catchError(e)
       ctx.status = info.status
@@ -71,7 +81,7 @@ class ArticleController{
       let id = ctx.params.articleId
       let result = await ArticleDao.findById(id)
       if (!result) throw { status: 401, errCode: 'article.not.found' }
-      result.formatDatetime = moment(result.createDate).format('YYYY年MM月DD日 HH:mm:ss')
+      result.publishDatetime = moment(result.createDate).format('YYYY年MM月DD日 HH:mm:ss')
       result.html = marked(result.content)
       ctx.body = result
     }catch (e) {
