@@ -20,7 +20,9 @@ class LoginImageController{
           imageList: [imageSrc]
         })
       }
-      ctx.body = rLoginImage
+      ctx.body = {
+        data: imageSrc
+      }
     } catch(e) {
       if (e) {
         let info = utils.catchError(e)

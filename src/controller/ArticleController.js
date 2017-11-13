@@ -80,6 +80,9 @@ class ArticleController{
     try{
       let id = ctx.params.articleId
       let result = await ArticleDao.findById(id)
+      let browsingAmount = isNaN(result.browsingAmount) ? 0 : result.browsingAmount
+      result.browsingAmount = browsingAmount + 1
+      await ArticleDao.update(result)
       if (!result) throw { status: 401, errCode: 'article.not.found' }
       result.publishDatetime = moment(result.createDate).format('YYYY年MM月DD日 HH:mm:ss')
       result.html = marked(result.content)

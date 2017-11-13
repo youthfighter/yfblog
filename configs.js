@@ -1,7 +1,7 @@
 module.exports = {
 	imageServer: {
-		dirPath: 'D:/static/image/',
-		webUrl: '/static/',
+		dirPath: 'D:/static/images/',
+		webUrl: '/static/images/',
 		dest: 'uploads/',
 		inputName: 'image'
 	},
