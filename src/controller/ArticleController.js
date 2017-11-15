@@ -4,11 +4,12 @@ const utils = require('../util/utils')
 const Session = require('../util/session')
 const marked = require('marked')
 const htmlUtil = require('../util/html')
+const pinyin = require("pinyin")
 class ArticleController{
   /* 插入文章 */
   async insertArticle (ctx) {
     try {
-      let { title, content} = ctx.request.body
+      let { title, content, tags} = ctx.request.body
       //后端数据验证
       if (!title) {
         throw { status: 500, errCode: 'need.article.title' }
@@ -16,10 +17,20 @@ class ArticleController{
       if (!content){
         throw { status: 500, errCode: 'need.article.content' }
       }
+      let articleTags = []
+      if (tags && tags.split(',').length > 0) {
+        tags.split(',').forEach(value => {
+          articleTags.push({
+            'name': pinyin(value, {style: pinyin.STYLE_NORMAL}).join(''),
+            'value': value
+          })
+        })
+      }
       ctx.body = await ArticleDao.insert({
         title,
         content,
-        author: ctx.session.user.name
+        author: ctx.session.user.name,
+        tags: articleTags
       })
     } catch (e) {
       let info = utils.catchError(e)
@@ -41,6 +52,15 @@ class ArticleController{
       article.title = params.title
       article.content = params.content
       article.hidden = params.hidden
+      if (params.tags && params.tags.split(',').length > 0) {
+        article.tags = []
+        params.tags.split(',').forEach(value => {
+          article.tags.push({
+            'name': pinyin(value, {style: pinyin.STYLE_NORMAL}).join(''),
+            'value': value
+          })
+        })
+      }
       ctx.body = await ArticleDao.update(article)
     } catch (e) {
       let info = utils.catchError(e)

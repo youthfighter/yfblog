@@ -12,6 +12,7 @@
     "debug": "^2.6.3",
     "fs-extra": "^4.0.2",
     "html-to-text": "^3.3.0",
+    "install": "^0.10.1",
     "koa": "^2.2.0",
     "koa-bodyparser": "^3.2.0",
     "koa-convert": "^1.2.0",
@@ -28,6 +29,8 @@
     "moment": "^2.19.1",
     "mongodb": "^2.2.33",
     "mongoose": "^4.12.6",
+    "npm": "^5.5.1",
+    "pinyin": "^2.8.3",
     "pug": "^2.0.0-rc.1",
     "trim-html-tag": "^1.0.5",
     "uuid": "^3.1.0"
