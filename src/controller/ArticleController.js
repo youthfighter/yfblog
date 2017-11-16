@@ -53,7 +53,7 @@ class ArticleController{
     }  
   }
   /* 获取所有文章 */
-  async getArticles(ctx){
+  async getArticles (ctx) {
     try{
       let params = {}
       let {page = 1, size = 20, author, tag } = ctx.query
@@ -75,7 +75,7 @@ class ArticleController{
     }
   }
   /* 获取某一篇文章 */
-  async getArticle(ctx){
+  async getArticle (ctx) {
     try{
       let id = ctx.params.articleId
       let result = await ArticleDao.findById(id)
@@ -90,6 +90,32 @@ class ArticleController{
       let info = utils.catchError(e)
       ctx.status = info.status
       ctx.body = info.body
+    }
+  }
+  /* 获取点击量最多的文章 */
+  async getHotArticles (ctx) {
+    try {
+      let articles = await ArticleDao.findTop('browsingAmount', 3)
+      ctx.body = {articles}
+    } catch (err) {
+      if (err) {
+      let info = utils.catchError(e)
+      ctx.status = info.status
+      ctx.body = info.body
+      }
+    }
+  }
+  /* 获取最新文章 */
+  async getNewArticles (ctx) {
+    try {
+      let articles = await ArticleDao.findTop('createDate', 3)
+      ctx.body = {articles}
+    } catch (err) {
+      if (err) {
+        let info = utils.catchError(e)
+        ctx.status = info.status
+        ctx.body = info.body
+      }
     }
   }
 }

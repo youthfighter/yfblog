@@ -10,4 +10,8 @@ router.get('/articles/:articleId', ArticleCtl.getArticle)
 router.post('/articles', loginCheck, ArticleCtl.insertArticle)
 /* 修改某篇文章 */
 router.put('/articles/:articleId', loginCheck, ArticleCtl.updateArticle)
+/* 获取最新的文章 */
+router.get('/newarticles', ArticleCtl.getNewArticles)
+/* 获取最热的文章 */
+router.get('/hotarticles', ArticleCtl.getHotArticles)
 module.exports = router
