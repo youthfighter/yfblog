@@ -8,5 +8,6 @@ module.exports = {
   'image.not.set': '还未设置过登陆背景图片',
   'need.article.permission': '没有该文章的操作权限',
   'task.cant.null': '任务内容不能为空',
-  'task.not.found': '没有找到该任务'
+  'task.not.found': '没有找到该任务',
+  'article.has.delete':'该文章已被删除'
 }

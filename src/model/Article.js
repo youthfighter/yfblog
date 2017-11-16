@@ -7,7 +7,7 @@ let ArticleSchema = new Schema({
   author: String,
   content:   String,
   browsingAmount: {type: Number, default: 0},
-  tags: [{value: String, name: String}],
+  tags: [String],
   lastUpdate: { type: Date, default: Date.now },
   createDate: {type: Date, default: Date.now},
   hidden: {type: Boolean, default: false}
