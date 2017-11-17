@@ -1,5 +1,6 @@
 const moment = require('moment')
 const ArticleDao = require('../dao/ArticleDao')
+const TagDao = require('../dao/TagDao')
 const utils = require('../util/utils')
 const Session = require('../util/session')
 const marked = require('marked')
@@ -16,7 +17,19 @@ class ArticleController{
       if (!content){
         throw { status: 500, errCode: 'need.article.content' }
       }
-      let articleTags = tags ? tags.split(',') : []
+      let articleTags = []
+      if (tags) {
+        /* 验证tag是否存在 */
+        const tagsObj = await TagDao.findTags()
+        let tagsArr = tagsObj.map(value => {
+          return value.name
+        })
+        tags.split(',').forEach(value => {
+          if (tagsArr.indexOf(value)!==-1) {
+            articleTags.push(value)
+          }
+        })
+      }
       ctx.body = await ArticleDao.insert({
         title,
         content,
@@ -44,7 +57,19 @@ class ArticleController{
       article.title = params.title
       article.content = params.content
       article.hidden = params.hidden
-      article.tags = params.tags ? params.tags.split(',') : []
+      if (params.tags) {
+        /* 验证tag是否存在 */
+        const tagsObj = await TagDao.findTags()
+        let tagsArr = tagsObj.map(value => {
+          return value.name
+        })
+        article.tags = []
+        params.tags.split(',').forEach(value => {
+          if (tagsArr.indexOf(value) !== -1) {
+            article.tags.push(value)
+          } 
+        })
+      }
       ctx.body = await ArticleDao.update(article)
     } catch (e) {
       let info = utils.catchError(e)
