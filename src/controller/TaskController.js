@@ -6,7 +6,9 @@ class TaskController{
       const { done = false } = ctx.query
       const author = ctx.session.user.name
       let tasks = await TaskDao.findByParams({done, author})
-      ctx.body = tasks
+      ctx.body = {
+        toDoList: tasks
+      }
     } catch (e) {
       if (e) {
         let info = utils.catchError(e)
