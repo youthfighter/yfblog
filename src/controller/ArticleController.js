@@ -57,13 +57,13 @@ class ArticleController{
       article.title = params.title
       article.content = params.content
       article.hidden = params.hidden
+      article.tags = []
       if (params.tags) {
         /* 验证tag是否存在 */
         const tagsObj = await TagDao.findTags()
         let tagsArr = tagsObj.map(value => {
           return value.name
         })
-        article.tags = []
         params.tags.split(',').forEach(value => {
           if (tagsArr.indexOf(value) !== -1) {
             article.tags.push(value)

@@ -1,2 +1,5 @@
-const marked = require('marked')
-console.log(marked('```js\n //console.log("hello"); \n```'))
+const TagDao = require('./src/dao/TagDao')
+TagDao.insert({
+    name: 'javascript',
+    author: 'admin'
+})
