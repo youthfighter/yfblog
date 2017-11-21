@@ -37,8 +37,12 @@ class TaskController{
       const id = ctx.params.taskId
       const userName = ctx.session.user.name
       let task = await TaskDao.findById(id)
-      if (task && task.author === userName) task.done = true
-      else throw { status: 403, errCode: 'need.task.permission' }
+      if (task && task.author === userName) {
+        task.done = true
+        task.doneDate = new Date()
+      } else {
+        throw { status: 403, errCode: 'need.task.permission' }
+      }
       ctx.body = await TaskDao.update(task)
     } catch (e) {
       if (e) {
