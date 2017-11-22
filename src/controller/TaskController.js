@@ -3,11 +3,16 @@ const utils = require('../util/utils')
 class TaskController{
   async getTasks (ctx) {
     try {
-      const { done = false } = ctx.query
+      const { done = false, page = 1, size = 20} = ctx.query
       const author = ctx.session.user.name
-      let tasks = await TaskDao.findByParams({done, author})
+      let total = await TaskDao.findTotalByParams({done, author})
+      let tasks = []
+      if (total > 0) {
+        tasks = await TaskDao.findPageByParams({done, author}, page, size)
+      }
       ctx.body = {
-        toDoList: tasks
+        toDoList: tasks,
+        total
       }
     } catch (e) {
       if (e) {

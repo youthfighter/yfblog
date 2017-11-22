@@ -15,5 +15,11 @@ class TaskDao extends BaseDao{
   findByParams (params) {
       return Task.find(params).sort({createDate:-1}).lean()
   }
+  findPageByParams (params, pageNum, limit) {
+    return Task.find(params).sort({createDate:-1}).limit(limit).skip((pageNum-1)*limit).lean()
+  }
+  findTotalByParams (params) {
+    return Task.count(params)
+  }
 }
 module.exports = new TaskDao()

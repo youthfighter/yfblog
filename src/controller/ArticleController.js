@@ -84,14 +84,18 @@ class ArticleController{
       let {page = 1, size = 20, author, tag } = ctx.query
       if (author) params.author = author
       if (tag) params.tags = tag
-      let articles = await ArticleDao.findPageByParams(params, parseInt(page), parseInt(size))
-      articles.forEach((value,index)=>{
-          value.html = marked(value.content)
-          value.description = `${htmlUtil.getText(value.html).substr(0,200)}...`
-      })
+      let total = await ArticleDao.findTotalByParams(params)
+      let articles = []
+      if (total > 0) {
+        articles = await ArticleDao.findPageByParams(params, parseInt(page), parseInt(size))
+        articles.forEach((value,index)=>{
+            value.html = marked(value.content)
+            value.description = `${htmlUtil.getText(value.html).substr(0,200)}...`
+        })
+      }
       ctx.body = {
         articles,
-        total: articles.length
+        total
       }
     }catch (e) {
       let info = utils.catchError(e)
