@@ -5,8 +5,7 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
-const session = require('koa-session');
-const cookie = require('./configs').cookie
+const session = require('koa-session')
 
 const index = require('./routes/index')
 const imageUpload = require('./routes/imageUpload')
