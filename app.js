@@ -5,7 +5,8 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
-const session = require('koa-session')
+const session = require('koa-session2')
+const store = require('./src/util/store')
 
 const index = require('./routes/index')
 const imageUpload = require('./routes/imageUpload')
@@ -22,7 +23,8 @@ onerror(app)
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
 }))
-app.use(session(cookieConfig, app));
+cookieConfig.store = new store()
+app.use(session(cookieConfig, app))
 app.use(json())
 app.use(logger())
 app.use(require('koa-static')(__dirname + '/public'))
@@ -36,11 +38,11 @@ app.use(async (ctx, next) => {
   const start = new Date()
   await next()
   const ms = new Date() - start
-  console.log(`${new Date()}:${ctx.method} ${ctx.url} - ${ms}ms`)
+  //console.log(`${new Date()}:${ctx.method} ${ctx.url} - ${ms}ms`)
 })
 /* session */
 app.use(async (ctx, next) => {
-  ctx.session.save()
+  ctx.session.lastDate = new Date()
   await next()
 }) 
 // routes

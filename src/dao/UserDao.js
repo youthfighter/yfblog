@@ -13,7 +13,7 @@ class UserDao extends BaseDao{
         return User.findById(id).lean()
     }
     findByName (name) {
-        return User.findOne({name})
+        return User.findOne({name}).lean()
     }
     findByParams (params) {
         return User.find(params).sort({createDate:-1}).lean()

@@ -1,5 +1,3 @@
-const TagDao = require('./src/dao/TagDao')
-TagDao.insert({
-    name: 'javascript',
-    author: 'admin'
-})
+var Redis = require('ioredis');
+var redis = new Redis();
+redis.set('key', 100, 'EX', 10);

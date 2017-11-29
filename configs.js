@@ -1,3 +1,4 @@
+const Store = require('./src/util/store')
 module.exports = {
 	imageServer: {
 		dirPath: 'D:/static/images/',
@@ -10,12 +11,18 @@ module.exports = {
 		port: '27017',
 		db: 'blog'
 	},
+	redis: {
+		ip: '127.0.0.1',
+		port: '6379',
+		db:0
+	},
 	cookie: {
 		key: 'SESSION_ID',
-		maxAge: 15*60*1000,
+		maxAge: 20*1000,
 		overwrite: true,
 		httpOnly: false,
 		signed: false,
 		rolling: false,
+		store: new Store()
 	}
 }

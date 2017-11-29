@@ -27,6 +27,8 @@ class UserController{
         let user = await UserDao.findByName(name)
         //用户存在，密码验证通过，返回sessionid
         if (user && user.password === password) {
+          delete user.password
+          console.log(user)
           ctx.session.user = user
           ctx.body = {
             name: user.name
