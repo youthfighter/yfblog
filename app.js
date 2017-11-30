@@ -4,10 +4,9 @@ const views = require('koa-views')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
-const logger = require('koa-logger')
 const session = require('koa-session2')
 const store = require('./src/util/store')
-
+const log4js = require('./src/util/log4').getLogger('blog')
 const index = require('./routes/index')
 const imageUpload = require('./routes/imageUpload')
 const webSettings = require('./routes/webSettings')
@@ -26,7 +25,6 @@ app.use(bodyparser({
 cookieConfig.store = new store()
 app.use(session(cookieConfig, app))
 app.use(json())
-app.use(logger())
 app.use(require('koa-static')(__dirname + '/public'))
 
 app.use(views(__dirname + '/views', {
@@ -38,7 +36,7 @@ app.use(async (ctx, next) => {
   const start = new Date()
   await next()
   const ms = new Date() - start
-  //console.log(`${new Date()}:${ctx.method} ${ctx.url} - ${ms}ms`)
+  log4js.info(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
 /* session */
 app.use(async (ctx, next) => {
@@ -55,7 +53,8 @@ app.use(task.routes(),task.allowedMethods())
 app.use(tag.routes(), tag.allowedMethods())
 // error-handling
 app.on('error', (err, ctx) => {
-  console.error('server error', err, ctx)
+  log4js.error('server error')
+  log4js.error(err)
 });
 
 module.exports = app

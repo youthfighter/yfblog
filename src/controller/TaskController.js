@@ -1,5 +1,6 @@
 const TaskDao = require('../dao/TaskDao')
 const utils = require('../util/utils')
+const log4js = require('../util/log4').getLogger('blog')
 class TaskController{
   async getTasks (ctx) {
     try {
@@ -16,6 +17,7 @@ class TaskController{
       }
     } catch (e) {
       if (e) {
+        log4js.error(e)
         let info = utils.catchError(e)
         ctx.status = info.status
         ctx.body = info.body
@@ -31,6 +33,7 @@ class TaskController{
       else throw { status: 403, errCode: 'task.not.found', }      
     } catch (e) {
       if (e) {
+        log4js.error(e)
         let info = utils.catchError(e)
         ctx.status = info.status
         ctx.body = info.body
@@ -51,6 +54,7 @@ class TaskController{
       ctx.body = await TaskDao.update(task)
     } catch (e) {
       if (e) {
+        log4js.error(e)
         let info = utils.catchError(e)
         ctx.status = info.status
         ctx.body = info.body
@@ -65,6 +69,7 @@ class TaskController{
       ctx.body = await TaskDao.insert({author, task})
     } catch (e) {
       if (e) {
+        log4js.error(e)
         let info = utils.catchError(e)
         ctx.status = info.status
         ctx.body = info.body

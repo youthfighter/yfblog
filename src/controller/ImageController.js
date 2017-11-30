@@ -3,6 +3,7 @@ const uuidv4 = require('uuid/v4')
 const utils = require('../util/utils')
 const ImageDao = require('../dao/ImageDao')
 const {dirPath, webUrl} = require('../../configs').imageServer
+const log4js = require('../util/log4').getLogger('blog')
 class ImageController{
   /* 上传新的背景图片 */
   async upload (ctx) {
@@ -11,6 +12,7 @@ class ImageController{
       ctx.body = image.src
     } catch(err) {
       if(err) {
+        log4js.error(e)
         let info = utils.catchError(err)
         ctx.status = info.status
         ctx.body = info.body

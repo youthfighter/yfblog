@@ -1,5 +1,6 @@
 const TagDao = require('../dao/TagDao')
 const utils = require('../util/utils')
+const log4js = require('../util/log4').getLogger('blog')
 class TagController{
   async getTags (ctx) {
     try {
@@ -10,6 +11,7 @@ class TagController{
       }
     } catch (e) {
       if (e) {
+        log4js.error(e)
         let info = utils.catchError(e)
         ctx.status = info.status
         ctx.body = info.body
@@ -22,6 +24,7 @@ class TagController{
       ctx.body = await TagDao.delete(_id)
     } catch (e) {
       if (e) {
+        log4js.error(e)
         let info = utils.catchError(e)
         ctx.status = info.status
         ctx.body = info.body
@@ -36,6 +39,7 @@ class TagController{
       ctx.body = await TagDao.insert({name, author})
     } catch (e) {
       if (e) {
+        log4js.error(e)
         let info = utils.catchError(e)
         ctx.status = info.status
         ctx.body = info.body

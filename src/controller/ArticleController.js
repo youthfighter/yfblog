@@ -5,6 +5,7 @@ const utils = require('../util/utils')
 const Session = require('../util/session')
 const marked = require('marked')
 const htmlUtil = require('../util/html')
+const log4js = require('../util/log4').getLogger('blog')
 class ArticleController{
   /* 插入文章 */
   async insertArticle (ctx) {
@@ -37,6 +38,7 @@ class ArticleController{
         tags: articleTags
       })
     } catch (e) {
+      log4js.error(e)
       let info = utils.catchError(e)
       ctx.status = info.status
       ctx.body = info.body
@@ -72,6 +74,7 @@ class ArticleController{
       }
       ctx.body = await ArticleDao.update(article)
     } catch (e) {
+      log4js.error(e)
       let info = utils.catchError(e)
       ctx.status = info.status
       ctx.body = info.body
@@ -98,6 +101,7 @@ class ArticleController{
         total
       }
     }catch (e) {
+      log4js.error(e)
       let info = utils.catchError(e)
       ctx.status = info.status
       ctx.body = info.body
@@ -116,6 +120,7 @@ class ArticleController{
       result.html = marked(result.content)
       ctx.body = result
     }catch (e) {
+      log4js.error(e)
       let info = utils.catchError(e)
       ctx.status = info.status
       ctx.body = info.body
@@ -128,6 +133,7 @@ class ArticleController{
       ctx.body = {articles}
     } catch (err) {
       if (err) {
+        log4js.error(e)
       let info = utils.catchError(e)
       ctx.status = info.status
       ctx.body = info.body
@@ -141,6 +147,7 @@ class ArticleController{
       ctx.body = {articles}
     } catch (err) {
       if (err) {
+        log4js.error(e)
         let info = utils.catchError(e)
         ctx.status = info.status
         ctx.body = info.body

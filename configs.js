@@ -24,5 +24,6 @@ module.exports = {
 		signed: false,
 		rolling: false,
 		store: new Store()
-	}
+	},
+	logPath: 'logs/'
 }

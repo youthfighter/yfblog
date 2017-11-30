@@ -2,6 +2,7 @@ const utils = require('../util/utils')
 const LoginImageDao = require('../dao/loginImageDao')
 const {path, url} = require('../../configs').imageServer
 const ImageCtr = require('../controller/ImageController')
+const log4js = require('../util/log4').getLogger('blog')
 class LoginImageController{
   /* 上传新的背景图片 */
   async uploadBgImage (ctx) {
@@ -25,6 +26,7 @@ class LoginImageController{
       }
     } catch(e) {
       if (e) {
+        log4js.error(e)
         let info = utils.catchError(e)
         ctx.status = info.status
         ctx.body = info.body
@@ -51,6 +53,7 @@ class LoginImageController{
       }
     } catch (e) {
       if (e) {
+        log4js.error(e)
         let info = utils.catchError(e)
         ctx.status = info.status
         ctx.body = info.body
@@ -69,6 +72,7 @@ class LoginImageController{
       ctx.body = loginImg
     } catch (e) {
       if (e) {
+        log4js.error(e)
         let info = utils.catchError(e)
         ctx.status = info.status
         ctx.body = info.body
@@ -86,6 +90,7 @@ class LoginImageController{
       ctx.body = loginImg.currImage
     } catch (e) {
       if (e) {
+        log4js.error(e)
         let info = utils.catchError(e)
         ctx.status = info.status
         ctx.body = info.body

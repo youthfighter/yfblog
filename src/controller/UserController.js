@@ -2,13 +2,16 @@ const UserDao = require('../dao/UserDao')
 const md5 = require('md5')
 const utils = require('../util/utils')
 const Session = require('../util/session')
+const log4js = require('../util/log4').getLogger('blog')
 class UserController{
   /* 获取当前登录用户的部分用户信息 */
   async getUserInfo(ctx) {
     try{
       const name = ctx.session.user.name
       ctx.body = { name }
+      
     }catch (e) {
+      log4js.error(e)
       let info = utils.catchError(e)
       ctx.status = info.status
       ctx.body = info.body
@@ -28,7 +31,6 @@ class UserController{
         //用户存在，密码验证通过，返回sessionid
         if (user && user.password === password) {
           delete user.password
-          console.log(user)
           ctx.session.user = user
           ctx.body = {
             name: user.name
@@ -38,6 +40,7 @@ class UserController{
         }
       }
     } catch(e) {
+      log4js.error(e)
       let info = utils.catchError(e)
       ctx.status = info.status
       ctx.body = info.body
@@ -48,6 +51,7 @@ class UserController{
       if (ctx.session.user) ctx.session = null
       ctx.body = 'success'
     } catch (e) {
+      log4js.error(e)
       let info = utils.catchError(e)
       ctx.status = info.status
       ctx.body = info.body
