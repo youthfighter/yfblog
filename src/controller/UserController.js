@@ -45,7 +45,7 @@ class UserController{
   }
   async layout (ctx) {    
     try {
-      if (ctx.session.user) ctx.session.user = null
+      if (ctx.session.user) ctx.session = null
       ctx.body = 'success'
     } catch (e) {
       let info = utils.catchError(e)
