@@ -1,3 +1,4 @@
-var Redis = require('ioredis');
-var redis = new Redis();
-redis.set('key', 100, 'EX', 10);
+var svgCaptcha = require('svg-captcha');
+
+var captcha = svgCaptcha.create();
+console.log(captcha);

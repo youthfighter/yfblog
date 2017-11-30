@@ -5,8 +5,9 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const session = require('koa-session2')
-const store = require('./src/util/store')
 const log4js = require('./src/util/log4').getLogger('blog')
+const cookieConfig = require('./configs').cookie
+/* 路由模块 */
 const index = require('./routes/index')
 const imageUpload = require('./routes/imageUpload')
 const webSettings = require('./routes/webSettings')
@@ -14,7 +15,7 @@ const users = require('./routes/users')
 const article = require('./routes/article')
 const task = require('./routes/task')
 const tag = require('./routes/tag')
-const cookieConfig = require('./configs').cookie
+const captcha = require('./routes/captcha')
 // error handler
 onerror(app)
 
@@ -22,7 +23,6 @@ onerror(app)
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
 }))
-cookieConfig.store = new store()
 app.use(session(cookieConfig, app))
 app.use(json())
 app.use(require('koa-static')(__dirname + '/public'))
@@ -51,6 +51,7 @@ app.use(imageUpload.routes(),imageUpload.allowedMethods())
 app.use(webSettings.routes(),webSettings.allowedMethods())
 app.use(task.routes(),task.allowedMethods())
 app.use(tag.routes(), tag.allowedMethods())
+app.use(captcha.routes(), captcha.allowedMethods())
 // error-handling
 app.on('error', (err, ctx) => {
   log4js.error('server error')
