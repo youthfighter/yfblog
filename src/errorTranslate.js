@@ -10,5 +10,6 @@ module.exports = {
   'task.cant.null': '任务内容不能为空',
   'task.not.found': '没有找到该任务',
   'article.has.delete': '该文章已被删除',
-  'need.tag.name': '请为标签命名'
+  'need.tag.name': '请为标签命名',
+  'user.captcha.error': '请输入正确的验证码'
 }

@@ -6,19 +6,9 @@ class Captcha{
     try {
       let captcha = svgCaptcha.create()
       ctx.session.captcha = captcha.text
-      ctx.body = captcha.data
-    } catch (e) {
-      if (e) {
-        log4js.error(e)
-        let info = utils.catchError(e)
-        ctx.status = info.status
-        ctx.body = info.body
+      ctx.body = {
+        captcha: captcha.data
       }
-    }
-  }
-  async deleteCaptcha (ctx) {
-    try {
-      ctx.session.captcha = null
     } catch (e) {
       if (e) {
         log4js.error(e)

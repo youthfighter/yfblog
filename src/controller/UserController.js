@@ -25,9 +25,15 @@ class UserController{
         ctx.body = ctx.session.user.name
       } else {
         //获取用户名密码
-        const { name, password } = ctx.request.body
+        const { name, password, captcha } = ctx.request.body
         //根据用户名查找用户
         let user = await UserDao.findByName(name)
+        let _captcha = ctx.session.captcha
+        if (captcha !== _captcha) {
+          throw {status: 500, errCode:'user.captcha.error'}
+        } else {
+          ctx.session.captcha = null
+        }
         //用户存在，密码验证通过，返回sessionid
         if (user && user.password === password) {
           delete user.password
