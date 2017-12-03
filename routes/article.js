@@ -14,4 +14,9 @@ router.put('/articles/:articleId', loginCheck, ArticleCtl.updateArticle)
 router.get('/newarticles', ArticleCtl.getNewArticles)
 /* 获取最热的文章 */
 router.get('/hotarticles', ArticleCtl.getHotArticles)
+/* 获取userid的全部的文章 */
+router.get('/owner/articles', loginCheck, ArticleCtl.getOwnerArticles)
+/* 获取userid的某篇文章 */
+router.get('/owner/articles/:articleId', loginCheck, ArticleCtl.getOwnerArticle)
+
 module.exports = router
