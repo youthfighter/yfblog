@@ -4,12 +4,14 @@ const log4js = require('../util/log4').getLogger('blog')
 class TaskController{
   async getTasks (ctx) {
     try {
-      const { done = false, page = 1, size = 20} = ctx.query
-      const author = ctx.session.user.name
-      let total = await TaskDao.findTotalByParams({done, author})
+      const { done, page = 1, size = 20} = ctx.query
+      let queryParams = {}
+      queryParams.author = ctx.session.user.name
+      if (done !== undefined) queryParams.done = done 
+      let total = await TaskDao.findTotalByParams(queryParams)
       let tasks = []
       if (total > 0) {
-        tasks = await TaskDao.findPageByParams({done, author}, page, size)
+        tasks = await TaskDao.findPageByParams(queryParams, page, size)
       }
       ctx.body = {
         toDoList: tasks,
@@ -67,6 +69,20 @@ class TaskController{
       const { task } = ctx.request.body
       if (!task) throw { status: 500, errCode: 'task.cant.null' }
       ctx.body = await TaskDao.insert({author, task})
+    } catch (e) {
+      if (e) {
+        log4js.error(e)
+        let info = utils.catchError(e)
+        ctx.status = info.status
+        ctx.body = info.body
+      }
+    }
+  }
+  async deleteTask (ctx) {
+    try {
+      const author = ctx.session.user.name
+      const _id = ctx.params.taskId
+      ctx.body = await TaskDao.delete({author, _id})
     } catch (e) {
       if (e) {
         log4js.error(e)

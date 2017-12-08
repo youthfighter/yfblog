@@ -83,9 +83,8 @@ class ArticleController{
   /* 获取所有文章 */
   async getArticles (ctx) {
     try{
-      let params = {}
-      let {page = 1, size = 20, author, tag } = ctx.query
-      if (author) params.author = author
+      let params = {hidden: false}
+      let {page = 1, size = 20, tag } = ctx.query
       if (tag) params.tags = tag
       let total = await ArticleDao.findTotalByParams(params)
       let articles = []
@@ -107,6 +106,29 @@ class ArticleController{
       ctx.body = info.body
     }
   }
+  /* 获取所有文章 */
+  async getOwnerArticles (ctx) {
+    try{
+      let params = {}
+      let {page = 1, size = 20, author, tag } = ctx.query
+      params.author = ctx.session.user.name
+      if (tag) params.tags = tag
+      let total = await ArticleDao.findTotalByParams(params)
+      let articles = []
+      if (total > 0) {
+        articles = await ArticleDao.findPageByParams(params, parseInt(page), parseInt(size))
+      }
+      ctx.body = {
+        articles,
+        total
+      }
+    }catch (e) {
+      log4js.error(e)
+      let info = utils.catchError(e)
+      ctx.status = info.status
+      ctx.body = info.body
+    }
+  }
   /* 获取某一篇文章 */
   async getArticle (ctx) {
     try{
@@ -115,8 +137,23 @@ class ArticleController{
       let browsingAmount = isNaN(result.browsingAmount) ? 0 : result.browsingAmount
       result.browsingAmount = browsingAmount + 1
       await ArticleDao.update(result)
+      /* 查询不到结果或者查询结果的hidden属性为true，返回文章未找到 */
+      if (!result || result.hidden) throw { status: 401, errCode: 'article.not.found' }
+      result.html = marked(result.content)
+      ctx.body = result
+    }catch (e) {
+      log4js.error(e)
+      let info = utils.catchError(e)
+      ctx.status = info.status
+      ctx.body = info.body
+    }
+  }
+  /* 获取某一篇文章 */
+  async getOwnerArticle (ctx) {
+    try{
+      let id = ctx.params.articleId
+      let result = await ArticleDao.findById(id)
       if (!result) throw { status: 401, errCode: 'article.not.found' }
-      result.publishDatetime = moment(result.createDate).format('YYYY年MM月DD日 HH:mm:ss')
       result.html = marked(result.content)
       ctx.body = result
     }catch (e) {

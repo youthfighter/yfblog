@@ -4,7 +4,10 @@ const utils = require('../util/utils')
 class Captcha{
   async getCaptcha (ctx) {
     try {
-      let captcha = svgCaptcha.create()
+      let captcha = svgCaptcha.create({
+        width: 100,
+        height: 32
+      })
       ctx.session.captcha = captcha.text
       ctx.body = {
         captcha: captcha.data

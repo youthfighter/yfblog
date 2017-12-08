@@ -9,6 +9,9 @@ class TaskDao extends BaseDao{
       delete params._id
       return Task.update({_id},params)
   }
+  delete (params) {
+    return Task.remove(params)
+  }
   findById (id) {
       return Task.findById(id).lean()
   }

@@ -11,5 +11,7 @@ router.get('/:taskId', loginCheck, TaskCtl.getTask)
 router.post('/', loginCheck, TaskCtl.insertTask)
 /* 设置任务已完成 */
 router.patch('/:taskId', loginCheck, TaskCtl.setTaskDone)
+/* 删除任务 */
+router.delete('/:taskId', loginCheck, TaskCtl.deleteTask)
 
 module.exports = router
