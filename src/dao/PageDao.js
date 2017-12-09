@@ -2,7 +2,7 @@ const Page = require('../model/Page')
 const BaseDao = require('./BaseDao')
 class PageDao extends BaseDao{
     insert (page) {
-        return new Page(Page).save()
+        return new Page(page).save()
     }
     update (params) {
         let _id = params._id
@@ -12,11 +12,23 @@ class PageDao extends BaseDao{
     findById (id) {
         return Page.findById(id).lean()
     }
-    findByName (name) {
-        return Page.findOne({name}).lean()
+    findByTitle (title) {
+        return  Page.find({title}).lean()
+    }
+    findByParentId (parentId) {
+        return Page.find({parentId}).lean()
     }
     findByParams (params) {
-        return Page.find(params).sort({createDate: -1}).lean()
+        return Page.find(params).lean()
+    }
+    findById (id) {
+        return Page.findById(id)
+    }
+    delete (id) {
+        return Page.findByIdAndRemove(id)
+    }
+    countByParentId (parentId) {
+        return Page.where({parentId}).count()
     }
 }
 module.exports = new PageDao()

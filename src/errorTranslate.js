@@ -11,5 +11,9 @@ module.exports = {
   'task.not.found': '没有找到该任务',
   'article.has.delete': '该文章已被删除',
   'need.tag.name': '请为标签命名',
-  'user.captcha.error': '请输入正确的验证码'
+  'user.captcha.error': '请输入正确的验证码',
+  'need.page.title': '请输入页面名称',
+  'need.page.href': '请输入页面路径',
+  'need.page.parentId': '请选择父节点',
+  'need.page.id': '请选择操作项'
 }

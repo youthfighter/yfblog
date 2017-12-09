@@ -16,6 +16,7 @@ const article = require('./routes/article')
 const task = require('./routes/task')
 const tag = require('./routes/tag')
 const captcha = require('./routes/captcha')
+const page = require('./routes/page')
 // error handler
 onerror(app)
 
@@ -52,6 +53,7 @@ app.use(webSettings.routes(),webSettings.allowedMethods())
 app.use(task.routes(),task.allowedMethods())
 app.use(tag.routes(), tag.allowedMethods())
 app.use(captcha.routes(), captcha.allowedMethods())
+app.use(page.routes(), page.allowedMethods())
 // error-handling
 app.on('error', (err, ctx) => {
   log4js.error('server error')
