@@ -4,9 +4,10 @@ const views = require('koa-views')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
-const session = require('koa-session2')
+/* const session = require('koa-session2') */
 const log4js = require('./src/util/log4').getLogger('blog')
 const cookieConfig = require('./configs').cookie
+const Store = require('./src/util/store')
 /* 路由模块 */
 const index = require('./routes/index')
 const imageUpload = require('./routes/imageUpload')
@@ -24,7 +25,7 @@ onerror(app)
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
 }))
-app.use(session(cookieConfig, app))
+/* app.use(session(cookieConfig, app)) */
 app.use(json())
 app.use(require('koa-static')(__dirname + '/public'))
 
@@ -41,7 +42,7 @@ app.use(async (ctx, next) => {
 })
 /* session */
 app.use(async (ctx, next) => {
-  ctx.session.lastDate = new Date()
+/*   ctx.session.lastDate = new Date() */
   await next()
 }) 
 // routes

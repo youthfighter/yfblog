@@ -7,6 +7,6 @@ router.post('/', UserCtl.login)
 /* 获取登录用户信息 */
 router.get('/', loginCheck, UserCtl.getUserInfo)
 /* 注销 */
-router.delete('/', UserCtl.layout)
+router.delete('/', loginCheck, UserCtl.layout)
 
 module.exports = router
