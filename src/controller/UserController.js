@@ -5,6 +5,7 @@ const Session = require('../util/session')
 const log4js = require('../util/log4').getLogger('blog')
 const createToken = require('../util/createToken')
 const UserCache = require('../redis/UserCache')
+const getWxInfo = require('../util/getWxInfo')
 class UserController{
   /* 获取当前登录用户的部分用户信息 */
   async getUserInfo(ctx) {
@@ -42,6 +43,20 @@ class UserController{
       let info = utils.catchError(e)
       ctx.status = info.status
       ctx.body = info.body
+    }
+  }
+  async wxLogin(ctx) {
+    try {
+      console.log(ctx.query.code)
+      const data = await getWxInfo(ctx.query.code, 'wx2bbde56f72774ab0', '279d35c3e0001a359b55faa9ca8d3668')
+      ctx.body = data
+    } catch (e) {
+      if (e) {
+        log4js.error(e)
+        let info = utils.catchError(e)
+        ctx.status = info.status
+        ctx.body = info.body
+      }
     }
   }
   async layout (ctx) {    
