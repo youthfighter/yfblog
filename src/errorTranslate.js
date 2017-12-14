@@ -15,5 +15,8 @@ module.exports = {
   'need.page.title': '请输入页面名称',
   'need.page.href': '请输入页面路径',
   'need.page.parentId': '请选择父节点',
-  'need.page.id': '请选择操作项'
+  'need.page.id': '请选择操作项',
+  'need.wx.id': '缺少微信相关信息',
+  'has.bind.wx': '该账号已经绑定微信',
+  'not.bind.wx': '该微信号未绑定用户'
 }

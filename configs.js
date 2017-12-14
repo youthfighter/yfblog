@@ -25,5 +25,7 @@ module.exports = {
 		rolling: false,
 		store: new Store()
 	},
-	logPath: 'logs/'
+	logPath: 'logs/',
+	appId: 'wx2bbde56f72774ab0',
+	secret: '279d35c3e0001a359b55faa9ca8d3668'
 }
