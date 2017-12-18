@@ -49,7 +49,7 @@ class UserController{
   async wxBind(ctx) {
     try {
       const { name, password, code } = ctx.request.body
-      const data = await getWxInfo(ctx.query.code, configs.appId, configs.secret)
+      const data = await getWxInfo(code, configs.appId, configs.secret)
       const openId = data.openId
       if (openId) {
         throw {status: 500, errCode:'need.wx.id'}
@@ -82,8 +82,9 @@ class UserController{
   async wxLogin(ctx) {
     try {
       const { code } = ctx.request.body
-      const data = await getWxInfo(code, 'wx2bbde56f72774ab0', '')
-      let users = await UserDao.findByParams({weixin: data.openId})
+      const data = await getWxInfo(code, configs.appId, configs.secret)
+      if (!data.openid) throw {status: 500, errCode:'not.bind.wx'}
+      let users = await UserDao.findByParams({weixin: data.openid})
       if (users.length > 0) {
         const user = users[0]
         delete user.password

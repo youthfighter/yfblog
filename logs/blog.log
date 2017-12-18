@@ -31,3 +31,107 @@
 [2017-12-13T22:06:21.641] [INFO] blog - GET /api/wx/session?code=001oLs991MsjeQ1bOi991jxp991oLs9z - 4543ms
 [2017-12-13T22:21:21.684] [INFO] blog - GET /api/wx/session?code=061pnsw30F46fD1JVwu30fruw30pnswX - 20040ms
 [2017-12-13T23:49:23.861] [INFO] blog - GET /api/wx/session?code=06172pZr1Jf0mo0oPb0s1KTKZr172pZt - 320ms
+[2017-12-16T23:45:17.862] [INFO] blog - GET /api/wx/session?code=06197kyP0VyKtb2ivOxP0C3eyP097kyL - 428ms
+[2017-12-16T23:47:20.781] [INFO] blog - GET /api/wx/session?code=061IpeTj2ZdKvF0zgKTj2H9qTj2IpeTL - 213ms
+[2017-12-16T23:49:28.087] [INFO] blog - GET /api/wx/session?code=061EFDWV0Y7vuV1518VV0J0PWV0EFDWO - 114ms
+[2017-12-16T23:50:20.889] [INFO] blog - GET /api/wx/session?code=081Wwryg1nwzjz0HJ4wg1Fskyg1Wwry5 - 137ms
+[2017-12-16T23:51:32.411] [INFO] blog - GET /api/wx/session?code=011etFee2tEiPE08Y4fe2ADEee2etFea - 135ms
+[2017-12-16T23:51:49.978] [INFO] blog - GET /api/wx/session?code=001M3Isn0i1Hgr1rceqn0JY3tn0M3IsX - 96ms
+[2017-12-16T23:52:25.817] [INFO] blog - GET /api/wx/session?code=011prfRg1twguz0wjwTg1FarRg1prfRC - 107ms
+[2017-12-16T23:52:30.637] [INFO] blog - GET /api/wx/session?code=001qXlkc17UmXu0ze8jc1yWokc1qXlk5 - 154ms
+[2017-12-16T23:52:42.860] [INFO] blog - GET /api/wx/session?code=061SdoSd05pLHz1aPYPd0XFdSd0SdoSo - 113ms
+[2017-12-16T23:52:50.060] [INFO] blog - GET /api/wx/session?code=0016OEKe1gIc9t0wUAJe1DAnKe16OEKc - 97ms
+[2017-12-16T23:54:06.710] [INFO] blog - GET /api/wx/session?code=081XIL091SdTnQ1F1u191pZw091XIL03 - 121ms
+[2017-12-16T23:54:36.571] [INFO] blog - GET /api/wx/session?code=071MpGCN0zCpS42ZfEBN0s60DN0MpGCu - 101ms
+[2017-12-16T23:54:55.193] [INFO] blog - GET /api/wx/session?code=0615uhQJ0uCAO52RU5UJ0y6CQJ05uhQN - 108ms
+[2017-12-16T23:58:30.689] [INFO] blog - GET /api/wx/session?code=071mzsM71NVyeT110rL71upuM71mzsMl - 238ms
+[2017-12-16T23:58:40.632] [INFO] blog - GET /api/wx/session?code=021Gskc70hTqTG1WeZa70Usjc70Gskcv - 121ms
+[2017-12-16T23:59:26.368] [INFO] blog - GET /api/wx/session?code=021JcO4y0U1Nrf1n9q4y0N6q4y0JcO4x - 124ms
+[2017-12-16T23:59:33.817] [INFO] blog - GET /api/wx/session?code=001Mtvcf1GzWht0n6bbf1OORcf1MtvcA - 175ms
+[2017-12-16T23:59:59.080] [INFO] blog - GET /api/wx/session?code=081hd0h52swtSN0DaRf52vGDg52hd0hN - 101ms
+[2017-12-17T00:01:31.127] [INFO] blog - GET /api/wx/session?code=0716ZGak2j0dNF0ji1ak2slTak26ZGaw - 99ms
+[2017-12-17T00:02:14.921] [INFO] blog - GET /api/wx/session?code=081MVHbM07f5t32y2ueM0DgubM0MVHbx - 102ms
+[2017-12-17T00:06:46.849] [INFO] blog - GET /api/wx/session?code=001CWLbO0FUWY92lcYdO0aL6cO0CWLby - 146ms
+[2017-12-17T00:07:22.282] [INFO] blog - GET /api/wx/session?code=061uz1RP0GuEOb2U77PP0yFLQP0uz1Rb - 124ms
+[2017-12-17T00:08:05.530] [INFO] blog - GET /api/wx/session?code=001sO1DX0OGpG12jFUDX0RC4DX0sO1DS - 155ms
+[2017-12-17T00:08:11.317] [INFO] blog - GET /api/wx/session?code=0813Lc0h0duAhy14k40h0M4b0h03Lc0O - 110ms
+[2017-12-17T00:09:20.245] [INFO] blog - GET /api/wx/session?code=081rqD6U07stUX1avL5U074z6U0rqD65 - 179ms
+[2017-12-17T00:09:38.922] [INFO] blog - GET /api/wx/session?code=001R5EYL0UWpG32Nbq0M0ogwYL0R5EYU - 121ms
+[2017-12-17T00:09:48.382] [INFO] blog - GET /api/wx/session?code=011jbgtB1c09xf0ScMsB1O1itB1jbgtg - 103ms
+[2017-12-17T00:09:56.119] [INFO] blog - GET /api/wx/session?code=001E313p0iQgyo10GCZo0pTW2p0E313k - 124ms
+[2017-12-17T00:10:40.569] [INFO] blog - GET /api/wx/session?code=011Da8Qu1AvTyd0hX0Pu1YQpQu1Da8Qk - 136ms
+[2017-12-17T00:11:20.668] [INFO] blog - GET /api/wx/session?code=001eKBz22lvUwY0ycPA22uzvz22eKBzi - 122ms
+[2017-12-17T00:11:48.243] [INFO] blog - GET /api/wx/session?code=061n3mB82r5DlR0yuVy822cqB82n3mBm - 480ms
+[2017-12-17T00:13:11.226] [INFO] blog - GET /api/wx/session?code=071is8QJ0hCuU52WdtMJ0YT0QJ0is8QH - 144ms
+[2017-12-17T00:13:43.815] [INFO] blog - GET /api/wx/session?code=001BIH002dcBv01WduYZ1PLW002BIH0I - 115ms
+[2017-12-17T00:13:52.171] [INFO] blog - GET /api/wx/session?code=061GqjWA0oJpmf2HarVA0w6cWA0GqjWL - 133ms
+[2017-12-17T00:14:04.245] [INFO] blog - GET /api/wx/session?code=021GJ9uE0ix45e2czFtE0FtquE0GJ9ux - 106ms
+[2017-12-17T00:14:55.607] [INFO] blog - GET /api/wx/session?code=061T8AHa1tN3Nt0ePMIa1PXJHa1T8AHg - 104ms
+[2017-12-17T00:15:43.934] [INFO] blog - GET /api/wx/session?code=001qwIE80SCGlI11b5C80maBE80qwIEl - 117ms
+[2017-12-17T00:16:10.554] [INFO] blog - GET /api/wx/session?code=071TDg3k1a2dWk0Sjc4k1nQr3k1TDg3j - 103ms
+[2017-12-17T00:17:15.058] [INFO] blog - GET /api/wx/session?code=081bp6iI1SobH80HjzeI1WIciI1bp6iq - 1ms
+[2017-12-17T00:17:38.615] [INFO] blog - GET /api/wx/session?code=0118GVW62h7CYK0nslW62ZyGW628GVWL - 0ms
+[2017-12-17T00:18:08.746] [INFO] blog - GET /api/wx/session?code=071pMWHn1UU2Dj0dlFFn1U9THn1pMWH7 - 2ms
+[2017-12-17T00:18:57.982] [INFO] blog - POST /api/wx/session - 4308ms
+[2017-12-17T00:20:04.254] [INFO] blog - POST /api/wx/session - 12439ms
+[2017-12-17T00:20:29.852] [INFO] blog - POST /api/wx/session - 13480ms
+[2017-12-17T00:21:13.176] [INFO] blog - POST /api/wx/session - 109ms
+[2017-12-17T00:21:18.559] [INFO] blog - POST /api/wx/session - 108ms
+[2017-12-17T00:25:59.861] [INFO] blog - POST /api/wx/session - 206ms
+[2017-12-17T00:27:00.762] [INFO] blog - POST /api/wx/session - 55012ms
+[2017-12-17T00:27:40.816] [INFO] blog - POST /api/wx/session - 119ms
+[2017-12-17T00:28:04.800] [INFO] blog - POST /api/wx/session - 17211ms
+[2017-12-17T00:29:01.040] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:29:01.045] [INFO] blog - POST /api/wx/session - 6945ms
+[2017-12-17T00:30:07.781] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:30:07.782] [INFO] blog - POST /api/wx/session - 3610ms
+[2017-12-17T00:30:21.171] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:30:21.172] [INFO] blog - POST /api/wx/session - 1834ms
+[2017-12-17T00:30:54.617] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:30:54.618] [INFO] blog - POST /api/wx/session - 4023ms
+[2017-12-17T00:32:39.962] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:32:39.963] [INFO] blog - POST /api/wx/session - 127ms
+[2017-12-17T00:34:02.439] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:34:02.439] [INFO] blog - POST /api/wx/session - 205ms
+[2017-12-17T00:34:15.223] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:34:15.223] [INFO] blog - POST /api/wx/session - 145ms
+[2017-12-17T00:35:03.448] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:35:03.449] [INFO] blog - POST /api/wx/session - 156ms
+[2017-12-17T00:35:16.177] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:35:16.178] [INFO] blog - POST /api/wx/session - 132ms
+[2017-12-17T00:38:13.593] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:38:13.593] [INFO] blog - POST /api/wx/session - 136ms
+[2017-12-17T00:41:29.261] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:41:29.262] [INFO] blog - POST /api/wx/session - 242ms
+[2017-12-17T00:42:29.294] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:42:29.295] [INFO] blog - POST /api/wx/session - 130ms
+[2017-12-17T00:42:41.997] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:42:41.998] [INFO] blog - POST /api/wx/session - 186ms
+[2017-12-17T00:44:08.861] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:44:08.862] [INFO] blog - POST /api/wx/session - 140ms
+[2017-12-17T00:44:23.836] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:44:23.837] [INFO] blog - POST /api/wx/session - 167ms
+[2017-12-17T00:44:31.890] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:44:31.890] [INFO] blog - POST /api/wx/session - 139ms
+[2017-12-17T00:45:05.951] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:45:05.952] [INFO] blog - POST /api/wx/session - 136ms
+[2017-12-17T00:46:09.797] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:46:09.798] [INFO] blog - POST /api/wx/session - 133ms
+[2017-12-17T00:46:28.906] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:46:28.907] [INFO] blog - POST /api/wx/session - 138ms
+[2017-12-17T00:54:07.805] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:54:07.806] [INFO] blog - POST /api/wx/session - 296ms
+[2017-12-17T00:54:16.998] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:54:16.999] [INFO] blog - POST /api/wx/session - 134ms
+[2017-12-17T00:54:33.578] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:54:33.578] [INFO] blog - POST /api/wx/session - 119ms
+[2017-12-17T00:54:41.028] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:54:41.028] [INFO] blog - POST /api/wx/session - 125ms
+[2017-12-17T00:54:46.847] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:54:46.847] [INFO] blog - POST /api/wx/session - 115ms
+[2017-12-17T00:54:53.754] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:54:53.755] [INFO] blog - POST /api/wx/session - 122ms
+[2017-12-17T00:55:21.277] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:55:21.279] [INFO] blog - POST /api/wx/session - 120ms
+[2017-12-17T00:55:31.323] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-17T00:55:31.323] [INFO] blog - POST /api/wx/session - 125ms
