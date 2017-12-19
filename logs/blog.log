@@ -320,3 +320,58 @@
 [2017-12-03T19:11:19.949] [INFO] blog - GET /api/owner/articles?page=1&size=20 - 12ms
 [2017-12-03T19:11:22.298] [INFO] blog - GET /api/tags - 2ms
 [2017-12-03T19:11:25.897] [INFO] blog - GET /api/owner/articles?page=1&size=20 - 5ms
+[2017-12-19T10:15:52.355] [INFO] blog - POST /wx/user - 2ms
+[2017-12-19T10:16:26.208] [ERROR] blog - ReferenceError: configs is not defined
+    at wxBind (c:\Users\11140821050150\Desktop\yfblog\src\controller\UserController.js:58:42)
+    at dispatch (c:\Users\11140821050150\Desktop\yfblog\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (c:\Users\11140821050150\Desktop\yfblog\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at c:\Users\11140821050150\Desktop\yfblog\node_modules\koa-router\lib\router.js:345:16
+    at dispatch (c:\Users\11140821050150\Desktop\yfblog\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at c:\Users\11140821050150\Desktop\yfblog\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (c:\Users\11140821050150\Desktop\yfblog\node_modules\koa-router\lib\router.js:350:31)
+    at dispatch (c:\Users\11140821050150\Desktop\yfblog\node_modules\koa-compose\index.js:42:32)
+    at next (c:\Users\11140821050150\Desktop\yfblog\node_modules\koa-compose\index.js:43:18)
+    at dispatch (c:\Users\11140821050150\Desktop\yfblog\node_modules\koa-router\lib\router.js:332:32)
+    at dispatch (c:\Users\11140821050150\Desktop\yfblog\node_modules\koa-compose\index.js:42:32)
+    at next (c:\Users\11140821050150\Desktop\yfblog\node_modules\koa-compose\index.js:43:18)
+    at app.use (c:\Users\11140821050150\Desktop\yfblog\app.js:45:9)
+    at dispatch (c:\Users\11140821050150\Desktop\yfblog\node_modules\koa-compose\index.js:42:32)
+    at next (c:\Users\11140821050150\Desktop\yfblog\node_modules\koa-compose\index.js:43:18)
+    at app.use (c:\Users\11140821050150\Desktop\yfblog\app.js:38:9)
+[2017-12-19T10:16:26.242] [INFO] blog - POST /api/wx/user - 35ms
+[2017-12-19T10:20:15.953] [ERROR] blog - { status: 500, errCode: 'has.bind.wx' }
+[2017-12-19T10:20:15.958] [INFO] blog - POST /api/wx/user - 475ms
+[2017-12-19T10:22:36.771] [ERROR] blog - { status: 500, errCode: 'has.bind.wx' }
+[2017-12-19T10:22:36.772] [INFO] blog - POST /api/wx/user - 29810ms
+[2017-12-19T10:24:04.614] [ERROR] blog - { status: 500, errCode: 'need.wx.id' }
+[2017-12-19T10:24:04.620] [INFO] blog - POST /api/wx/user - 12124ms
+[2017-12-19T10:24:36.228] [ERROR] blog - ReferenceError: openId is not defined
+    at wxBind (c:\Users\11140821050150\Desktop\yfblog\src\controller\UserController.js:64:55)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)
+[2017-12-19T10:24:36.238] [INFO] blog - POST /api/wx/user - 12053ms
+[2017-12-19T10:26:17.312] [INFO] blog - POST /api/wx/user - 47720ms
+[2017-12-19T10:30:35.532] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-19T10:30:35.535] [INFO] blog - POST /api/wx/session - 604ms
+[2017-12-19T10:31:04.929] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-19T10:31:04.929] [INFO] blog - POST /api/wx/session - 171ms
+[2017-12-19T10:32:07.030] [ERROR] blog - { status: 500, errCode: 'not.bind.wx' }
+[2017-12-19T10:32:07.031] [INFO] blog - POST /api/wx/session - 24158ms
+[2017-12-19T10:32:50.910] [INFO] blog - POST /api/wx/user - 4427ms
+[2017-12-19T10:33:38.986] [ERROR] blog - { status: 500, errCode: 'has.bind.wx' }
+[2017-12-19T10:33:38.991] [INFO] blog - POST /api/wx/user - 250ms
+[2017-12-19T10:34:59.789] [ERROR] blog - { status: 500, errCode: 'has.bind.wx' }
+[2017-12-19T10:34:59.790] [INFO] blog - POST /api/wx/user - 32119ms
+[2017-12-19T10:36:15.230] [INFO] blog - POST /api/wx/session - 154ms
+[2017-12-19T10:42:10.799] [INFO] blog - POST /api/wx/session - 325005ms
+[2017-12-19T10:43:31.045] [INFO] blog - POST /api/wx/session - 57447ms
+[2017-12-19T10:46:12.014] [ERROR] blog - { status: 500, errCode: 'user.captcha.error' }
+[2017-12-19T10:46:12.016] [INFO] blog - POST /api/session - 3391ms
+[2017-12-19T10:46:27.392] [INFO] blog - GET /api/captcha - 3418ms
+[2017-12-19T10:47:16.177] [INFO] blog - POST /api/session - 2ms
+[2017-12-19T10:48:17.999] [INFO] blog - GET /api/tags - 43477ms
+[2017-12-19T10:50:19.437] [INFO] blog - GET /api/tasks/5a05045f2d741b10282a2165 - 49ms
+[2017-12-19T10:51:11.984] [INFO] blog - POST /api/wx/session - 6735ms
+[2017-12-19T10:51:41.870] [INFO] blog - POST /api/wx/session - 20930ms
+[2017-12-19T10:52:07.706] [INFO] blog - POST /api/wx/session - 433ms
+[2017-12-19T10:52:18.579] [INFO] blog - POST /api/wx/session - 147ms

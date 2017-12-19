@@ -6,6 +6,7 @@ let UserSchema = new Schema({
   password: String,
   tell: String,
   email: String,
+  weixin: String,
   role: { type: String, default: '2' },
   disabled: { type: Boolean, default: false }
 });
